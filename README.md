@@ -1,4 +1,4 @@
-## bwinf_petanque
+# bwinf_petanque
 
 Ridvan und Jenny spielen gerne Pétanque. Dabei
 werfen die beiden Spielenden abwechselnd Kugeln
@@ -23,7 +23,7 @@ Spiel zu Ende. Wenn die Zielkugel vom Feld
 geschoben wird, endet das Spiel unentschieden.
 Ansonsten gewinnt der Spieler, der die meisten
 Kugeln neben der Zielkugel platzieren konnte.
-# Aufgabe 4
+## Aufgabe 4
 Schreibe ein Programm, mit dem man dieses
 Computer-Pétanque spielen kann.
 Beschreibe, wie du Ridvans und Jennys
