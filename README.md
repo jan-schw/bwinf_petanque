@@ -1,4 +1,4 @@
-# bwinf_petanque
+# Computer-Pétanque
 
 Ridvan und Jenny spielen gerne Pétanque. Dabei
 werfen die beiden Spielenden abwechselnd Kugeln
