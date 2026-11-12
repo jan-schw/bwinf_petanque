@@ -29,3 +29,30 @@ Computer-Pétanque spielen kann.
 Beschreibe, wie du Ridvans und Jennys
 Überlegungen präzisiert hast, um das Spiel zu
 realisieren.
+
+## Gedanken zur Aufgabe
+
+2d-Array/Matrix bietet sich an mit 13x13 Feldern
+Spielen später im Terminal oder über PyGame?
+Gerades Werfen einfach, fummelig wird das schräge/orthogonale Werfen
+Pures Array mit Symbolen oder Objektorientierung?
+Spielende erkennen -> Rundenanzahl als Parameter bzw checken ob Zielkugel auf Feld
+Rundenanzahl eingeben oder festlegen? 
+Nach Zielkugel checken nach jedem Wurf
+"Meiste Kugeln um Zielkugel" heißt die 8 umliegenden Felder?
+Spielernamen optional, aber nett
+
+## ToDo's
+
+1. Erstellen des Arrays
+2. Zielkugel zufällig im Array platzieren
+3. Eingabe von Spielernamen
+4. Eingabe von Rundenanzahl
+5. Logik für das Werfen von Kugel
+   6. Zufällig 0-5 Felder weit
+   7. Orthogonale Bewegung von 0-1 Feldern
+   8. Weiterschieben von Kugeln 
+9. Abwechselndes Werfen vom Rand
+10. Spielende prüfen
+    11. Aktuelle Runde = Rundenanzahl?
+    12. Zielkugel nicht mehr auf dem Feld
