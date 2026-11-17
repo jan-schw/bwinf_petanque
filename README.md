@@ -56,3 +56,4 @@ Spielernamen optional, aber nett
 10. Spielende prüfen
     11. Aktuelle Runde = Rundenanzahl?
     12. Zielkugel nicht mehr auf dem Feld
+13. Prüfen ob eingegebene Koordinaten gültig sind (Randfeld)
