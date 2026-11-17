@@ -21,8 +21,25 @@ def create_initial_array():
     return [["0" for i in range(UPPER_BOUND)] for j in range(UPPER_BOUND)]
 
 def throw(input_x, input_y, player):
-    #force = 0
-    arr[input_x - 1][input_y - 1] = player
+    force = random.randint(0, 5)
+    orthogonal = random.randint(0,1)
+
+    #check what the edge is
+    if input_x == LOWER_BOUND:
+        temp_y = input_y - 1
+        if target_y != input_y:
+            if target_y > input_y:
+                temp_y += orthogonal
+            else:
+                temp_y -= orthogonal
+        arr[input_x - 1 + force][temp_y] = player
+    elif input_x == UPPER_BOUND:
+        arr[input_x - 1 - force][input_y - 1 - orthogonal] = player
+    elif input_y == LOWER_BOUND:
+        arr[input_x - 1 + orthogonal][input_y - 1 + force] = player
+    elif input_y == UPPER_BOUND:
+        arr[input_x - 1 - orthogonal][input_y - 1 - force] = player
+    print("Threw with force {} and orthogonal {}".format(force, orthogonal))
 
 def get_coordinates_from_player():
     print("Use values between 1 and 13")
@@ -52,8 +69,8 @@ def get_current_player(round_count):
 print("Time for Petanque!")
 
 arr = create_initial_array()
-x,y = get_initial_coordinates()
-arr[x][y] = "X"
+target_x,target_y = get_initial_coordinates()
+arr[target_x][target_y] = "X"
 print_field(arr)
 
 count = 0
