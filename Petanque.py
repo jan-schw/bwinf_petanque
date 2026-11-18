@@ -15,44 +15,56 @@ def print_field(field_to_print: list):
     print(border)
 
 def get_initial_coordinates():
-    return random.randint(LOWER_BOUND, UPPER_BOUND), random.randint(LOWER_BOUND, UPPER_BOUND)
+    return random.randint(LOWER_BOUND - 1, UPPER_BOUND - 1), random.randint(LOWER_BOUND - 1, UPPER_BOUND - 1)
 
 def create_initial_array():
     return [["0" for i in range(UPPER_BOUND)] for j in range(UPPER_BOUND)]
 
+def add_orthogonal(target_coordinate, input_coordinate):
+    orthogonal = 0
+
+    print("target {}, input {}".format(target_coordinate, input_coordinate))
+    if target_coordinate != input_coordinate:
+        orthogonal = random.randint(0, 1)
+        if target_coordinate < input_coordinate:
+            orthogonal * -1
+
+    if input_coordinate + orthogonal < LOWER_BOUND or input_coordinate + orthogonal > UPPER_BOUND:
+        orthogonal = 0
+
+    print("Threw with orthogonal {}".format(orthogonal))
+    return orthogonal
+
 def throw(input_x, input_y, player):
     force = random.randint(0, 5)
-    orthogonal = random.randint(0,1)
+    #orthogonal = random.randint(0, 1)
 
     #go from 1-13 to 0-12 due to zero indexed arrays
-    input_x -= 1
-    input_y -= 1
-
-    #check what the edge is
+    final_x, final_y = input_x - 1, input_y - 1
 
     #throwing from top to bottom
     if input_x == LOWER_BOUND:
-
-        if target_y != input_y:
-            if target_y > input_y:
-                input_y += orthogonal
-            else:
-                input_y -= orthogonal
-        arr[input_x + force][input_y] = player
+        final_x += force
+        final_y += add_orthogonal(target_y, input_y)
 
     #throwing from bottom to top
     elif input_x == UPPER_BOUND:
-        arr[input_x - force][input_y - orthogonal] = player
+        final_x -= force
+        final_y += add_orthogonal(target_y, input_y)
 
     #throwing from left to right
     elif input_y == LOWER_BOUND:
-        arr[input_x + orthogonal][input_y + force] = player
+        final_x += add_orthogonal(target_x, input_x)
+        final_y += force
 
     #throwing from right to left
     elif input_y == UPPER_BOUND:
-        arr[input_x - orthogonal][input_y - force] = player
+        final_x += add_orthogonal(target_x, input_x)
+        final_y -= force
 
-    print("Threw with force {} and orthogonal {}".format(force, orthogonal))
+    arr[final_x][final_y] = player
+
+    print("Threw with force {}".format(force))
 
 def get_coordinates_from_player():
     print("Use values between 1 and 13")
