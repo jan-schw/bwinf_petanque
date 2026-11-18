@@ -27,7 +27,7 @@ def add_orthogonal(target_coordinate, input_coordinate):
     if target_coordinate != input_coordinate:
         orthogonal = random.randint(0, 1)
         if target_coordinate < input_coordinate:
-            orthogonal * -1
+            orthogonal *= -1
 
     if input_coordinate + orthogonal < LOWER_BOUND or input_coordinate + orthogonal > UPPER_BOUND:
         orthogonal = 0
