@@ -24,21 +24,34 @@ def throw(input_x, input_y, player):
     force = random.randint(0, 5)
     orthogonal = random.randint(0,1)
 
+    #go from 1-13 to 0-12 due to zero indexed arrays
+    input_x -= 1
+    input_y -= 1
+
     #check what the edge is
+
+    #throwing from top to bottom
     if input_x == LOWER_BOUND:
-        temp_y = input_y - 1
+
         if target_y != input_y:
             if target_y > input_y:
-                temp_y += orthogonal
+                input_y += orthogonal
             else:
-                temp_y -= orthogonal
-        arr[input_x - 1 + force][temp_y] = player
+                input_y -= orthogonal
+        arr[input_x + force][input_y] = player
+
+    #throwing from bottom to top
     elif input_x == UPPER_BOUND:
-        arr[input_x - 1 - force][input_y - 1 - orthogonal] = player
+        arr[input_x - force][input_y - orthogonal] = player
+
+    #throwing from left to right
     elif input_y == LOWER_BOUND:
-        arr[input_x - 1 + orthogonal][input_y - 1 + force] = player
+        arr[input_x + orthogonal][input_y + force] = player
+
+    #throwing from right to left
     elif input_y == UPPER_BOUND:
-        arr[input_x - 1 - orthogonal][input_y - 1 - force] = player
+        arr[input_x - orthogonal][input_y - force] = player
+
     print("Threw with force {} and orthogonal {}".format(force, orthogonal))
 
 def get_coordinates_from_player():
